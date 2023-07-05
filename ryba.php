@@ -8,7 +8,7 @@
     <title>Rybak</title>
     <script defer src="../logic.js"></script>
     <link href="../style-offpage.css" rel="stylesheet" />
-    <link href="../search-tool.css" rel="stylesheet" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

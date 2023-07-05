@@ -1,3 +1,4 @@
+<link href="../search-tool.css" rel="stylesheet" />
 <div class="search-tool">
     <div class="fish-container">
         <h2>Szukaj</h2>
