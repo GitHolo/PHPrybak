@@ -65,18 +65,18 @@
                   <div class='vertical-hr'></div>
                   <div class='fish-record-measurement'>
                   <p class='measurement-value'>";
-                  if ($row['recordWeight'] >=1){
+                  $record=floatval($row['recordWeight']);
+                  if ($record >=1){
                     echo $row['recordWeight'];
                     echo " KG";
                   }
-                  elseif($row['recordWeight']==null){
+                  elseif($record==null){
                     echo "brak";
                   }
                   else{
-                    echo $row['recordWeight']*1000;
+                    echo $record*1000;
                     echo " g";
                   };
-                  $record=floatval($row['recordWeight']);
                   $lbs= 2.20462262185;
                   echo "</p>
                   <p class='measurement-value'>".sprintf("%.1f", $record * $lbs)." LB</p>
@@ -92,19 +92,53 @@
                     <tbody>
                       <tr>
                         <td class='tabel-left'>wymiar ochronny</td>
-                        <td class='tabel-right'>brak</td>
+                        <td class='tabel-right'>";
+                        $protect = $row['protect'];
+                        if ($protect >= 100){
+                          echo "do ".($protectPoss/100)." m";
+                        }
+                        elseif ($protect == null){
+                          echo "brak";
+                        }
+                        else{
+                          echo "do ".$protect." cm";
+                        }
+                        echo "</td>
                       </tr>
                       <tr>
                         <td class='tabel-left'>możliwość zabrania z łowiska w ciągu doby</td>
-                        <td class='tabel-right'>do 5 kg</td>
+                        <td class='tabel-right'>";
+                        $protectPoss = $row['protectPoss'];
+                        if ($protectPoss >= 1000){
+                          echo "do ".($protectPoss/1000)." kg";
+                        }
+                        elseif ($protectPoss == null){
+                          echo "bez limitu";
+                        }
+                        else{
+                          echo "do ".$protectPoss." g";
+                        }
+                        echo "</td>
                       </tr>
                       <tr>
                         <td class='tabel-bottom-left'>
                           okres ochronny
                         </td>
-                        <td class='tabel-bottom-right'>
-                          brak
-                        </td>
+                        <td class='tabel-bottom-right'>";
+                        $sql3 = "SELECT ptime.name
+                        FROM protecttimes
+                        INNER JOIN fish ON protecttimes.fishID = fish.fishID
+                        INNER JOIN ptime ON protecttimes.protectID = ptime.protectID
+                        WHERE fish.fishID = $fishID";
+                        $result3 = $db->query($sql3);
+                        if ($result3->num_rows > 0) {
+                            while ($row3 = $result3->fetch_assoc()) {
+                                echo "<span style='color:#3360bb;'>•</span>".$row3["name"] . "<br>";
+                            }
+                        } else {
+                            echo "brak";
+                        }
+                        echo "</td>
                       </tr>
                     </tbody>
                   </table></div>
@@ -114,10 +148,23 @@
                       <p class='fish-location-title'>
                         WYSTĘPOWANIE
                       </p>
-                      <ul style='width:".$row['width']."px;'>
-                        <li>rzeki</li>
-                        <li>zbiorniki zaporowe</li>
-                        <li>duże jeziora</li>
+                      <ul style='width:".$row['width']."px;'>";
+                      $sql4 = "SELECT loc.name
+                      FROM fishlocs
+                      INNER JOIN fish ON fishlocs.fishID = fish.fishID
+                      INNER JOIN loc ON fishlocs.locID = loc.locID
+                      WHERE fish.fishID = $fishID";
+                      
+                      $result4 = $db->query($sql4);
+                      
+                      if ($result4->num_rows > 0) {
+                          while ($row4 = $result4->fetch_assoc()) {
+                              echo "<li>".$row4["name"]."</li>";
+                          }
+                      } else {
+                          echo "brak";
+                      }
+                        echo "
                       </ul>
                     </div>
                     <div class='vertical-hr-two' style='".$row['margin']."'></div>
@@ -125,11 +172,23 @@
                       <p class='fish-location-title'>
                         PRZYNĘTY
                       </p>
-                      <ul>
-                        <li>czerwone i białe robaki</li>
-                        <li>chrząszcze i szarańczaki</li>
-                        <li>przynęty sztuczne</li>
-                      </ul>
+                      <ul>";
+                      $sql2 = "SELECT bait.name
+                      FROM fishbaits
+                      INNER JOIN fish ON fishbaits.fishID = fish.fishID
+                      INNER JOIN bait ON fishbaits.BaitID = bait.BaitID
+                      WHERE fish.fishID = $fishID";
+                      
+                      $result2 = $db->query($sql2);
+                      
+                      if ($result2->num_rows > 0) {
+                          while ($row2 = $result2->fetch_assoc()) {
+                              echo "<li>".$row2["name"]."</li>";
+                          }
+                      } else {
+                          echo "brak";
+                      }
+                      echo "</ul>
                     </div>
                   </div>
                 </div>
