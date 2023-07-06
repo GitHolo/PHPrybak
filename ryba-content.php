@@ -1,7 +1,14 @@
-<?php include('header.html');
-    echo "<section class='content-background'>";
+<?php 
+    if (!isset($_GET['id'])) {
+      echo "<h1>Błąd: nie określono identyfikatora ryby.</h1>
+      <a class='zrodla' href='..'><h2>Powrót</h2></a>";
+      exit;
+    }
+    include('header.html');
+    echo "<section class='content-background' style='max-width:1400px;'>";
     include('announcement.html');
     $db = mysqli_connect("localhost","root","","rybak");
+    
     $fishID = $_GET['id'];
     $sql1 = "SELECT fish.*, fishdesc.*
              FROM fish
@@ -39,13 +46,12 @@
                   <h3>Rozmiary</h3>
                   <p>długość do ";
                   if ($row['maxLength'] >=1){
-                    echo $row['maxLength']."m;";
+                    echo $row['maxLength']." m;";
                   }
                   else{
                     echo $row['maxLength']*100;
-                    echo "cm;";
+                    echo " cm;";
                   };
-                  
                   echo " masa do ";
                   if ($row['maxWeight'] >=1000){
                     echo $row['maxWeight']/1000;
@@ -58,7 +64,7 @@
 
                   echo "</p>
                   </div>
-                <div class='fish-record'>
+                <div class='fish-record' style='height:50px'>
                   <p class='fish-record-text'>
                     Wędkarski rekord polski
                   </p>
@@ -77,10 +83,17 @@
                     echo $record*1000;
                     echo " g";
                   };
+                  echo "</p><p class='measurement-value'>";
                   $lbs= 2.20462262185;
-                  echo "</p>
-                  <p class='measurement-value'>".sprintf("%.1f", $record * $lbs)." LB</p>
-                </div>
+                  if ($row['recordWeight']!==null){
+                    $result = $record * $lbs;
+                    $formatted2 = sprintf("%.2f", $result);
+                    if (substr($formatted2, -1) === '0') {
+                        $formatted2 = sprintf("%.1f", $result);
+                    }
+                    echo $formatted2." LB</p>";
+                  }
+                echo "</div>
                 </div>
                   <div class='table-wrapper'>
                   <table>
@@ -112,11 +125,14 @@
                         if ($protectPoss >= 1000){
                           echo "do ".($protectPoss/1000)." kg";
                         }
-                        elseif ($protectPoss == null){
+                        elseif ($protectPoss > 10){
+                          echo "do ".$protectPoss." g";
+                        }
+                        elseif ($protectPoss === null){
                           echo "bez limitu";
                         }
                         else{
-                          echo "do ".$protectPoss." g";
+                          echo "do ".$protectPoss." szt.";
                         }
                         echo "</td>
                       </tr>
@@ -167,7 +183,7 @@
                         echo "
                       </ul>
                     </div>
-                    <div class='vertical-hr-two' style='".$row['margin']."'></div>
+                    <div class='vertical-hr-two' style='margin-left:".$row['margin']."px'></div>
                     <div>
                       <p class='fish-location-title'>
                         PRZYNĘTY

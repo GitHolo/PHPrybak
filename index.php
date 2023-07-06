@@ -34,7 +34,7 @@
         </p>
       </div>
     </section>
-    <section class="content-background">
+    <section class="content-background" style="max-width: 1400px;">
       <?php include('announcement.html');?>
       <div class="about-us">
         <h2 style="margin: 0">O nas</h2>

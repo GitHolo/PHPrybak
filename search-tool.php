@@ -10,8 +10,9 @@
                 <?php
                $db = mysqli_connect("localhost","root","","rybak");
                $sql1 = "SELECT fish.*, fishdesc.*
-                        FROM fish
-                        INNER JOIN fishdesc ON fish.fishID = fishdesc.fishID";
+               FROM fish
+               INNER JOIN fishdesc ON fish.fishID = fishdesc.fishID
+               ORDER BY fish.name ASC";
                $result = $db->query($sql1);
            
                     while ($row = $result->fetch_assoc()) {
@@ -27,14 +28,14 @@
                         echo "</div>";
                     }
                 ?>
-            </div>
-        </div>
+           </div>
+          </div>
         <div>
-            <a class="zrodla" href="../zrodla.php">Źródła</a>
+            <a class="zrodla" href="../zrodla.html">Źródła</a>
+          </div>
         </div>
-    </div>
-    <script src="logic.js"></script>
-    <script>
-        search();
-    </script>
-</div>
+        <script src="logic.js"></script>
+        <script>
+          search();
+        </script>
+      </div>

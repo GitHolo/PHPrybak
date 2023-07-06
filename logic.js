@@ -71,14 +71,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const targetElement = document.querySelector(".about");
   const additionalPixelsElement = document.getElementById("additionalPixels");
   const additionalPixels = parseInt(additionalPixelsElement.dataset.value);
-  const minWidth = 1402;
+  const minWidth = 1000;
 
   let initialSourceHeight = 0;
-
   function setInitialSourceHeight() {
     initialSourceHeight = sourceElement.offsetHeight;
   }
-
   function setTargetElementHeight() {
     const windowWidth = window.innerWidth;
     if (windowWidth >= minWidth) {

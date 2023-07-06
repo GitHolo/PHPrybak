@@ -52,6 +52,7 @@ h1 {
   border: 3px solid black;
   border-top: none;
   border-bottom: none;
+  max-width: 1400px;
 }
 .about-title {
   text-align: left;
@@ -421,11 +422,4 @@ th {
     width: 98%;
   }
 }
-@media screen and (min-width: 1921px) {
-  .about-content {
-    left: calc(10% + 640px);
-  }
-  .about-fish-img {
-    min-width: 360px;
-  }
-}
+
