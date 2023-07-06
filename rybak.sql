@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2023 at 01:58 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Lip 06, 2023 at 03:00 PM
+-- Wersja serwera: 10.4.28-MariaDB
+-- Wersja PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,12 +24,12 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `bait`
+-- Struktura tabeli dla tabeli `bait`
 --
 
 CREATE TABLE `bait` (
   `BaitID` tinyint(4) NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_polish_ci NOT NULL
+  `name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
@@ -53,15 +53,15 @@ INSERT INTO `bait` (`BaitID`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fish`
+-- Struktura tabeli dla tabeli `fish`
 --
 
 CREATE TABLE `fish` (
   `fishID` smallint(6) NOT NULL,
-  `name` varchar(50) COLLATE utf8mb4_polish_ci NOT NULL,
-  `nameLatin` varchar(50) COLLATE utf8mb4_polish_ci NOT NULL,
-  `nameEng` varchar(50) COLLATE utf8mb4_polish_ci NOT NULL,
-  `img` varchar(50) COLLATE utf8mb4_polish_ci NOT NULL,
+  `name` varchar(50) NOT NULL,
+  `nameLatin` varchar(50) NOT NULL,
+  `nameEng` varchar(50) NOT NULL,
+  `img` varchar(50) NOT NULL,
   `maxLength` float NOT NULL,
   `maxWeight` float NOT NULL,
   `recordWeight` float DEFAULT NULL,
@@ -78,25 +78,25 @@ CREATE TABLE `fish` (
 
 INSERT INTO `fish` (`fishID`, `name`, `nameLatin`, `nameEng`, `img`, `maxLength`, `maxWeight`, `recordWeight`, `protect`, `protectPoss`, `additionalPixels`, `width`, `margin`) VALUES
 (1, 'Amur biały', '(Ctenopharyngodon idella)', 'Grass carp', '../images/amur_bialy.png', 1, 25000, 39.2, NULL, NULL, 0, 146, 170),
-(2, 'Boleń', '(Aspius aspius)', 'Asp', '../images/bolen.png', 0.8, 8000, 8.05, 25, 5000, 100, 164, 135),
-(3, 'Certa', '(Vimba vimba)', 'Vimba', '../images/certa.png', 0.45, 1000, 1.74, 30, 5, 0, 178, 170),
+(2, 'Boleń', '(Aspius aspius)', 'Asp', '../images/bolen.png', 0.8, 8000, 8.05, 25, 5000, 120, 164, 135),
+(3, 'Certa', '(Vimba vimba)', 'Vimba', '../images/certa.png', 0.45, 1000, 1.74, 30, 5, -50, 178, 170),
 (4, 'Jaź', '(Leuciscus idus)', 'Ide', '../images/jaz.png', 0.6, 7000, 5.1, NULL, 5000, -200, 145, 135),
-(5, 'Jelec', '(Leuciscus leuciscus)', 'Dace', '../images/jelec.png', 0.3, 200, NULL, 15, 5000, 50, 184, 170),
-(6, 'Karaś srebrzysty', '(Carassius auratus gibelio)', 'Prussian carp', '../images/karas_srebrzysty.png', 0.4, 2000, 3.4, NULL, NULL, 0, 180, 170),
-(7, 'Karp', '(Cyprinus carpio)', 'Carp', '../images/karp.png', 1.2, 30000, 30, 30, 3, 100, 184, 170),
-(8, 'Kleń', '(Squalius cephalus)', 'Chub', '../images/klen.png', 0.6, 2500, 3.71, 25, 5000, -100, 145, 130),
-(9, 'Krąp', '(Abramis bjoerkna)', 'White bream', '../images/krap.png', 0.3, 650, 2.2, NULL, NULL, 0, 184, 170),
-(10, 'Leszcz', '(Abramis brama)', 'Common bream', '../images/leszcz.png', 0.7, 6000, 6.95, NULL, NULL, 100, 184, 170),
-(11, 'Płoć', '(Rutilus rutilus)', 'Roach', '../images/ploc.png', 0.4, 1500, 2.2, NULL, NULL, 60, 200, 192),
-(12, 'Świnka', '(Chondrostoma nasus)', 'Nase', '../images/swinka.png', 0.5, 1500, 2.24, 25, 5, 0, 170, 150),
-(13, 'Tołpyga biała', '(Hypophthalmichthys molitrix)', 'Silver carp', '../images/tolpyga_biala.png', 0.9, 1200, NULL, NULL, NULL, 150, 140, 130),
-(14, 'Tołpyga pstra', '(Aristichthys nobilis)', 'Bighead carp', '../images/tolpyga_pstra.png', 1.5, 40000, 54, NULL, NULL, 150, 184, 170),
-(15, 'Wzdręga', '(Scardinius erythrophthalmus)', 'Rudd', '../images/wzdrega.png', 0.4, 1200, 1.69, 15, 5000, 60, 200, 192);
+(5, 'Jelec', '(Leuciscus leuciscus)', 'Dace', '../images/jelec.png', 0.3, 200, NULL, 15, 5000, -80, 184, 170),
+(6, 'Karaś srebrzysty', '(Carassius auratus gibelio)', 'Prussian carp', '../images/karas_srebrzysty.png', 0.4, 2000, 3.4, NULL, NULL, -90, 180, 170),
+(7, 'Karp', '(Cyprinus carpio)', 'Carp', '../images/karp.png', 1.2, 30000, 30, 30, 3, -50, 184, 170),
+(8, 'Kleń', '(Squalius cephalus)', 'Chub', '../images/klen.png', 0.6, 2500, 3.71, 25, 5000, -160, 145, 130),
+(9, 'Krąp', '(Abramis bjoerkna)', 'White bream', '../images/krap.png', 0.3, 650, 2.2, NULL, NULL, -100, 184, 170),
+(10, 'Leszcz', '(Abramis brama)', 'Common bream', '../images/leszcz.png', 0.7, 6000, 6.95, NULL, NULL, 0, 184, 170),
+(11, 'Płoć', '(Rutilus rutilus)', 'Roach', '../images/ploc.png', 0.4, 1500, 2.2, NULL, NULL, -50, 200, 192),
+(12, 'Świnka', '(Chondrostoma nasus)', 'Nase', '../images/swinka.png', 0.5, 1500, 2.24, 25, 5, -100, 170, 150),
+(13, 'Tołpyga biała', '(Hypophthalmichthys molitrix)', 'Silver carp', '../images/tolpyga_biala.png', 0.9, 1200, NULL, NULL, NULL, -30, 140, 130),
+(14, 'Tołpyga pstra', '(Aristichthys nobilis)', 'Bighead carp', '../images/tolpyga_pstra.png', 1.5, 40000, 54, NULL, NULL, -20, 184, 170),
+(15, 'Wzdręga', '(Scardinius erythrophthalmus)', 'Rudd', '../images/wzdrega.png', 0.4, 1200, 1.69, 15, 5000, -50, 200, 192);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fishbaits`
+-- Struktura tabeli dla tabeli `fishbaits`
 --
 
 CREATE TABLE `fishbaits` (
@@ -157,16 +157,16 @@ INSERT INTO `fishbaits` (`fishID`, `BaitID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fishdesc`
+-- Struktura tabeli dla tabeli `fishdesc`
 --
 
 CREATE TABLE `fishdesc` (
   `fishID` smallint(6) NOT NULL,
-  `desc` varchar(2000) COLLATE utf8mb4_polish_ci NOT NULL,
-  `chara` varchar(2000) COLLATE utf8mb4_polish_ci NOT NULL,
-  `reprod` varchar(2000) COLLATE utf8mb4_polish_ci NOT NULL,
-  `appearImg` varchar(500) COLLATE utf8mb4_polish_ci NOT NULL,
-  `appear` varchar(2000) COLLATE utf8mb4_polish_ci NOT NULL
+  `desc` varchar(2000) NOT NULL,
+  `chara` varchar(2000) NOT NULL,
+  `reprod` varchar(2000) NOT NULL,
+  `appearImg` varchar(500) NOT NULL,
+  `appear` varchar(2000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
@@ -193,7 +193,7 @@ INSERT INTO `fishdesc` (`fishID`, `desc`, `chara`, `reprod`, `appearImg`, `appea
 -- --------------------------------------------------------
 
 --
--- Table structure for table `fishlocs`
+-- Struktura tabeli dla tabeli `fishlocs`
 --
 
 CREATE TABLE `fishlocs` (
@@ -255,12 +255,12 @@ INSERT INTO `fishlocs` (`fishID`, `locID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loc`
+-- Struktura tabeli dla tabeli `loc`
 --
 
 CREATE TABLE `loc` (
   `locID` tinyint(4) NOT NULL,
-  `name` varchar(300) COLLATE utf8mb4_polish_ci NOT NULL
+  `name` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
@@ -299,7 +299,7 @@ INSERT INTO `loc` (`locID`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `protecttimes`
+-- Struktura tabeli dla tabeli `protecttimes`
 --
 
 CREATE TABLE `protecttimes` (
@@ -319,12 +319,12 @@ INSERT INTO `protecttimes` (`fishID`, `protectID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ptime`
+-- Struktura tabeli dla tabeli `ptime`
 --
 
 CREATE TABLE `ptime` (
   `protectID` tinyint(4) NOT NULL,
-  `name` varchar(300) COLLATE utf8mb4_polish_ci NOT NULL
+  `name` varchar(300) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
@@ -337,35 +337,35 @@ INSERT INTO `ptime` (`protectID`, `name`) VALUES
 (3, 'od 1 sty.\r\ndo 15 maj.');
 
 --
--- Indexes for dumped tables
+-- Indeksy dla zrzutów tabel
 --
 
 --
--- Indexes for table `bait`
+-- Indeksy dla tabeli `bait`
 --
 ALTER TABLE `bait`
   ADD PRIMARY KEY (`BaitID`);
 
 --
--- Indexes for table `fish`
+-- Indeksy dla tabeli `fish`
 --
 ALTER TABLE `fish`
   ADD PRIMARY KEY (`fishID`);
 
 --
--- Indexes for table `fishdesc`
+-- Indeksy dla tabeli `fishdesc`
 --
 ALTER TABLE `fishdesc`
   ADD PRIMARY KEY (`fishID`);
 
 --
--- Indexes for table `loc`
+-- Indeksy dla tabeli `loc`
 --
 ALTER TABLE `loc`
   ADD PRIMARY KEY (`locID`);
 
 --
--- Indexes for table `ptime`
+-- Indeksy dla tabeli `ptime`
 --
 ALTER TABLE `ptime`
   ADD PRIMARY KEY (`protectID`);
