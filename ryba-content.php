@@ -45,7 +45,7 @@
             <p class='english-name'><abbr title='Angielski'>ANG.</abbr> <span lang='en'>".$row['nameEng']."</span></p>
           </div>
         
-                <img src='".$row['img']."' alt='".$row['name']."'>
+                <img src='".$baseUrl.$row['img']."' alt='".$row['name']."'>
                 <div>
                   <h3>Rozmiary</h3>
                   <p>długość do ";
