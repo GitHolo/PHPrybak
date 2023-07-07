@@ -23,10 +23,9 @@ if ($_SERVER['REQUEST_URI'] !== '/') {
                         $description = $row['desc'];
                         $image = $row['img'];
                         $fishName = $row['name'];
-
                         echo "<div class='fish-item' data-description='{$description}'>";
                         echo "<a href='ryba.php?id=".$row['fishID']."'>";
-                        echo "<img src='{$image}'>";
+                        echo "<img src='".$baseUrl.$image."'>";
                         echo "<div class='fish-name'>{$fishName}</div>";
                         echo "</a>";
                         echo "</div>";
