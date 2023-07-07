@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="pl">
-  <head>
+  <head><?php
+  $baseUrl = '';
+if ($_SERVER['REQUEST_URI'] !== '/') {
+    $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+}?>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/jpg" href="../images/licensed-image.jpg" />
+    <link rel="icon" type="image/jpg" href="<?php echo $baseUrl; ?>/images/licensed-image.jpg" />
     <title>Rybak</title>
-    <script defer src="../logic.js"></script>
-    <link href="../style-offpage.css" rel="stylesheet" />
+    <script defer src="<?php echo $baseUrl; ?>/logic.js"></script>
+    <link href="<?php echo $baseUrl; ?>/style-offpage.css" rel="stylesheet" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

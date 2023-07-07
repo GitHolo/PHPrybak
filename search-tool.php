@@ -1,4 +1,8 @@
-<link href="../search-tool.css" rel="stylesheet" />
+<?php $baseUrl = '';
+if ($_SERVER['REQUEST_URI'] !== '/') {
+    $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+}?>
+<link href="<?php echo $baseUrl; ?>/search-tool.css" rel="stylesheet" />
 <div class="search-tool">
     <div class="fish-container">
         <h2>Szukaj</h2>
@@ -31,7 +35,7 @@
            </div>
           </div>
         <div>
-            <a class="zrodla" href="../zrodla.html">Źródła</a>
+            <a class="zrodla" href="<?php echo $baseUrl; ?>/zrodla.php">Źródła</a>
           </div>
         </div>
         <script src="logic.js"></script>

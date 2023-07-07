@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/jpg" href="../images/licensed-image.jpg" />
     <title>Rybak</title>
-    <script defer src="../logic.js"></script>
-    <link href="../style-offpage.css" rel="stylesheet" />
-    <link href="../search-tool.css" rel="stylesheet" />
+    <?php $baseUrl = '';
+if ($_SERVER['REQUEST_URI'] !== '/') {
+    $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+}?>
+    <link rel="icon" type="image/jpg" href="<?php echo $baseUrl; ?>/images/licensed-image.jpg" />
+    <script defer src="<?php echo $baseUrl; ?>/logic.js"></script>
+    <link href="<?php echo $baseUrl; ?>/style-offpage.css" rel="stylesheet" />
+    <link href="<?php echo $baseUrl; ?>/search-tool.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,7 +22,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-  <?php include('header.html');
+  <?php include('header.php');
     echo "<section class='content-background'>";
     include('announcement.html');?>
       <div class="about-us" style="padding-bottom: 0;">
@@ -41,10 +45,10 @@
           <a class="zrodla" href="https://atlasryb.online/">https://atlasryb.online/</a>
         </div>
       </div>
-      <a class="zrodla" href=".."><h2>Powrót</h2></a>
+      <a class="zrodla" href="<?php echo $baseUrl; ?>"><h2>Powrót</h2></a>
       <div style="padding: 400px;"></div>
       </div>
-      <?php include('footer.html'); ?>
+      <?php include('footer.php'); ?>
     </section>
   </body>
 </html>

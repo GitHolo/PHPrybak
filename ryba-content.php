@@ -1,10 +1,14 @@
 <?php 
+    $baseUrl = '';
+    if ($_SERVER['REQUEST_URI'] !== '/') {
+        $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+    }
     if (!isset($_GET['id'])) {
       echo "<h1>Błąd: nie określono identyfikatora ryby.</h1>
-      <a class='zrodla' href='..'><h2>Powrót</h2></a>";
+      <a class='zrodla' href='".$baseUrl."'><h2>Powrót</h2></a>";
       exit;
     }
-    include('header.html');
+    include('header.php');
     echo "<section class='content-background' style='max-width:1400px;'>";
     include('announcement.html');
     $db = mysqli_connect("localhost","root","","rybak");
@@ -213,7 +217,7 @@
     </div>
         <hr />";
         include('search-tool.php');
-        include('footer.html');
+        include('footer.php');
         
       
       echo "</section>";?>
