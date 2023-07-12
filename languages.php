@@ -27,6 +27,7 @@ $translations = [
       'search' => 'Szukaj',
       'search-fish' => 'Szukaj ryb...',
       'sources' => 'Źródła',
+      'back' => 'Powrót',
       'contact' => 'Kontakt'
   ],
   'en' => [
@@ -38,6 +39,7 @@ $translations = [
     'search' => 'Search',
     'search-fish' => 'Search for fish...',
     'sources' => 'Sources',
+    'back' => 'Back',
     'contact' => 'Contact'
 ],
   'es' => [
@@ -49,6 +51,7 @@ $translations = [
     'search' => 'Buscar',
     'search-fish' => 'Buscar peces...',
     'sources' => 'Fuentes',
+    'back' => 'Volver',
     'contact' => 'Contacto'
 ],
   'fr' => [
@@ -61,6 +64,7 @@ $translations = [
     'search' => 'Rechercher',
     'search-fish' => 'Rechercher des poissons...',
     'sources' => 'Sources',
+    'back' => 'Retour',
     'contact' => 'Contact'
 ],
 ];

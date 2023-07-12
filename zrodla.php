@@ -49,7 +49,7 @@ include ('languages.php');
           <a class="zrodla" href="https://atlasryb.online/">https://atlasryb.online/</a>
         </div>
       </div>
-      <a class="zrodla" href="<?php echo $baseUrl; ?>"><h2>Powrót</h2></a>
+      <a class="zrodla" href="<?php echo $baseUrl; ?>?lang=<?php echo $selectedLanguage?>"><h2><?php echo translate('back'); ?></h2></a>
       <div style="padding: 400px;"></div>
       </div>
       <?php include('footer.php'); ?>
