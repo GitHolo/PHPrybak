@@ -1,14 +1,18 @@
+<?php $baseUrl = '';
+if ($_SERVER['REQUEST_URI'] !== '/') {
+    $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+}
+
+include ('languages.php');
+
+?>
 <!DOCTYPE html>
-<html lang="pl">
+<html lang=<?php echo "'".$selectedLanguage."'>"?>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rybak</title>
-    <?php $baseUrl = '';
-if ($_SERVER['REQUEST_URI'] !== '/') {
-    $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
-}?>
     <link rel="icon" type="image/jpg" href="<?php echo $baseUrl; ?>/images/licensed-image.jpg" />
     <script defer src="<?php echo $baseUrl; ?>/logic.js"></script>
     <link href="<?php echo $baseUrl; ?>/style-offpage.css" rel="stylesheet" />
@@ -24,9 +28,9 @@ if ($_SERVER['REQUEST_URI'] !== '/') {
   <body>
   <?php include('header.php');
     echo "<section class='content-background'>";
-    include('announcement.html');?>
+    include('announcement.php');?>
       <div class="about-us" style="padding-bottom: 0;">
-        <h2 style="margin: 0">Źródła</h2>
+        <h2 style="margin: 0"><?php echo translate('sources'); ?></h2>
         <p class="about-us-content">
           <div>
           <a class="zrodla" href="https://pl.wikipedia.org/">https://pl.wikipedia.org/</a>

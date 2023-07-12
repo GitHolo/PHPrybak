@@ -5,9 +5,9 @@ if ($_SERVER['REQUEST_URI'] !== '/') {
 <link href="<?php echo $baseUrl; ?>/search-tool.css" rel="stylesheet" />
 <div class="search-tool">
     <div class="fish-container">
-        <h2>Szukaj</h2>
+        <h2><?php echo translate('search'); ?></h2>
         <div class="search-container">
-            <input type="text" id="search" placeholder="Szukaj ryb...">
+            <input type="text" id="search" placeholder=<?php echo "'".translate('search-fish')."'"; ?>>
         </div>
         <div class="fish-tool">
             <div class="fish-list">
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_URI'] !== '/') {
            </div>
           </div>
         <div>
-            <a class="zrodla" href="<?php echo $baseUrl; ?>/zrodla.php">Źródła</a>
+            <a class="zrodla" href="<?php echo $baseUrl; ?>/zrodla.php?lang=<?php echo $selectedLanguage?>"><?php echo translate('sources'); ?></a>
           </div>
         </div>
         <script src="logic.js"></script>

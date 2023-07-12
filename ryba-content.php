@@ -10,7 +10,7 @@
     }
     include('header.php');
     echo "<section class='content-background' style='max-width:1400px;'>";
-    include('announcement.html');
+    include('announcement.php');
     $db = mysqli_connect("localhost","root","","rybak");
     
     $fishID = $_GET['id'];

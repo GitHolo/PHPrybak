@@ -49,7 +49,7 @@ include ('languages.php');
       </div>
     </section>
     <section class="content-background" style="max-width: 1400px;">
-      <?php include('announcement.html');?>
+      <?php include('announcement.php');?>
       <div class="about-us">
         <h2 style="margin: 0"> <?php echo translate('about-us'); ?></h2>
         <p class="about-us-content">

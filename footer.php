@@ -1,4 +1,3 @@
-<?php include('languages.php');?>
 <footer>
   <div class="container">
     <h3><?php echo translate('contact'); ?></h3>
