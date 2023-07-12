@@ -1,6 +1,7 @@
+<?php include('languages.php');?>
 <footer>
   <div class="container">
-    <h3>Kontakt</h3>
+    <h3><?php echo translate('contact'); ?></h3>
     <div>Discord: holocide</div>
     <div>Discord: .soupyboy</div>
     <div>

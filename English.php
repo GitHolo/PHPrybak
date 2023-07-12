@@ -1,5 +1,0 @@
-<?php
-return [
-    'welcome' => 'Welcome to our website!',
-    'description' => 'This is a sample description.',
-];
