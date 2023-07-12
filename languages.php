@@ -57,8 +57,7 @@ $translations = [
   'fr' => [
     'announcement' => 'LE POISSON!!',
     'description-welcome' => 'Toute information sur les poissons et leur apparence',
-    'paragraph-welcome' => 'Page de stage ZSK pour Maksymilian Felczak et Bartosz Borzyskowski.
-    Borzyskowskiego.',
+    'paragraph-welcome' => 'Page de stage ZSK pour Maksymilian Felczak et Bartosz Borzyskowski.',
     'about-us' => 'À propos de nous',
     'about-us-content' => "Nous sommes une équipe de stagiaires qui avons créé un site web avec des dessins de poissons et leurs descriptions. Notre objectif est de permettre aux utilisateurs de voir et d'apprendre sur différentes espèces de poissons de manière virtuelle. Sur notre site web, vous trouverez des dessins de différentes espèces de poissons qui ont été minutieusement réalisés et reproduits dans les moindres détails. Chaque modèle comprend une description de l'espèce de poisson, ses caractéristiques distinctives, son habitat et d'autres informations précieuses. Notre site web est un excellent endroit pour tous les passionnés de poissons qui souhaitent explorer la diversité des espèces, les caractéristiques uniques de chaque poisson, ainsi que leurs habitats et leurs exigences environnementales. Grâce à notre site web, les utilisateurs ont l'opportunité d'apprendre sur différentes espèces de poissons sans quitter leur domicile. Nous nous efforçons de rendre notre site web convivial et intuitif, permettant aux utilisateurs de trouver rapidement et facilement les modèles de poissons qui les intéressent, ainsi que des informations précieuses à leur sujet. Merci de votre intérêt pour notre site web, et nous vous encourageons à l'utiliser pour découvrir et apprécier la diversité des espèces de poissons.",
     'search' => 'Rechercher',

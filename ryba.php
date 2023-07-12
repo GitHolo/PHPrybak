@@ -1,5 +1,13 @@
+<?php $baseUrl = '';
+if ($_SERVER['REQUEST_URI'] !== '/') {
+    $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+}
+
+include ('languages.php');
+
+?>
 <!DOCTYPE html>
-<html lang="pl">
+<html lang=<?php echo "'".$selectedLanguage."'>"?>
   <head><?php
   $baseUrl = '';
 if ($_SERVER['REQUEST_URI'] !== '/') {
