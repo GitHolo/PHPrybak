@@ -13,10 +13,10 @@ if ($_SERVER['REQUEST_URI'] !== '/') {
             <div class="fish-list">
                 <?php
                $db = mysqli_connect("localhost","root","","rybak");
-               $sql1 = "SELECT fish.*, fishdesc.*
+               $sql1 = "SELECT fish.*, fishdesc_".$selectedLanguage.".*
                FROM fish
-               INNER JOIN fishdesc ON fish.fishID = fishdesc.fishID
-               ORDER BY fish.name ASC";
+               INNER JOIN fishdesc_".$selectedLanguage." ON fish.fishID = fishdesc_".$selectedLanguage.".fishID
+               ORDER BY fishdesc_".$selectedLanguage.".name ASC";
                $result = $db->query($sql1);
            
                     while ($row = $result->fetch_assoc()) {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_URI'] !== '/') {
                         $image = $row['img'];
                         $fishName = $row['name'];
                         echo "<div class='fish-item' data-description='{$description}'>";
-                        echo "<a href='ryba.php?id=".$row['fishID']."'>";
+                        echo "<a href='ryba.php?id=".$row['fishID']."&lang=".$selectedLanguage."'>";
                         echo "<img src='".$baseUrl.$image."'>";
                         echo "<div class='fish-name'>{$fishName}</div>";
                         echo "</a>";

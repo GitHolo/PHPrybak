@@ -14,41 +14,44 @@
     $db = mysqli_connect("localhost","root","","rybak");
     
     $fishID = $_GET['id'];
-    $sql1 = "SELECT fish.*, fishdesc.*
-             FROM fish
-             INNER JOIN fishdesc ON fish.fishID = fishdesc.fishID
-             WHERE fish.fishID = $fishID";
+    $sql1 = "SELECT fish.*, fishdesc_".$selectedLanguage.".*
+         FROM fish
+         INNER JOIN fishdesc_".$selectedLanguage." ON fish.fishID = fishdesc_".$selectedLanguage.".fishID
+         WHERE fish.fishID = $fishID";
     $result = $db->query($sql1);
     $row = $result->fetch_assoc();
       echo "<div id='additionalPixels' data-value='".$row['additionalPixels']."' style='display: none;'></div><div class='about'>
             <div class='about-description'>
               <div class='about-content'>
                 <div class='about-content-description'>
-              <h2 class='about-content-title'>Opis</h2>
+              <h2 class='about-content-title'>".translate('desc')."</h2>
               <p>".$row["desc"]."</p></div>
         
-        <div class='about-content-description'><h2 class='about-content-title'>Cechy charakterystyczne</h2>
+        <div class='about-content-description'><h2 class='about-content-title'>".translate('chara')."</h2>
           <p>".$row['chara']."</p>
         </div>
-        <div class='about-content-description'><h2 class='about-content-title'>Rozród</h2>
+        <div class='about-content-description'><h2 class='about-content-title'>".translate('reprod')."</h2>
           <p>".$row['reprod']."</p>
         </div>
         <div class='about-content-description' style='border-bottom: none;'>
-        <h2 class='about-content-title'>Występowania gatunku</h2>
+        <h2 class='about-content-title'>".translate('distrib')."</h2>
         <img src='".$row['appearImg']."'>
         <p>".$row['appear']."</p>
       </div>
       </div>
         <div class='about-fish-img'>
           <div class='about-title'>
-            <h2 style='margin: 0'>".$row['name']." <br><span class='latin-name'>".$row['nameLatin']."</span></h2>
-            <p class='english-name'><abbr title='Angielski'>ANG.</abbr> <span lang='en'>".$row['nameEng']."</span></p>
-          </div>
+            <h2 style='margin: 0'>".$row['name']." <br><span class='latin-name'>".$row['nameLatin']."</span></h2>";
+            if ($selectedLanguage !== "en"){
+              echo "
+              <p class='english-name'><abbr title='".translate('english')."'>".translate('abbr')."</abbr> <span lang='en'>".$row['nameEng']."</span></p>";
+            }
+          echo "</div>
         
                 <img src='".$baseUrl.$row['img']."' alt='".$row['name']."'>
                 <div>
-                  <h3>Rozmiary</h3>
-                  <p>długość do ";
+                  <h3>".translate('size')."</h3>
+                  <p>".translate('length')." ";
                   if ($row['maxLength'] >=1){
                     echo $row['maxLength']." m;";
                   }
@@ -56,7 +59,7 @@
                     echo $row['maxLength']*100;
                     echo " cm;";
                   };
-                  echo " masa do ";
+                  echo " ".translate('weight')." ";
                   if ($row['maxWeight'] >=1000){
                     echo $row['maxWeight']/1000;
                     echo "kg";
@@ -70,7 +73,7 @@
                   </div>
                 <div class='fish-record' style='height:50px'>
                   <p class='fish-record-text'>
-                    Wędkarski rekord polski
+                    ".translate('record')."
                   </p>
                   <div class='vertical-hr'></div>
                   <div class='fish-record-measurement'>
@@ -81,7 +84,7 @@
                     echo " KG";
                   }
                   elseif($record==null){
-                    echo "brak";
+                    echo translate('none');
                   }
                   else{
                     echo $record*1000;
@@ -103,52 +106,52 @@
                   <table>
                     <thead>
                       <tr>
-                        <th colspan='2' class='th-header'>OKRES I WYMIARY OCHRONNE W WODACH PZW</th>
+                        <th colspan='2' class='th-header'>".translate('season')."</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td class='tabel-left'>wymiar ochronny</td>
+                        <td class='tabel-left'>".translate('sizeLimit')."</td>
                         <td class='tabel-right'>";
                         $protect = $row['protect'];
                         if ($protect >= 100){
-                          echo "do ".($protectPoss/100)." m";
+                          echo translate('upto')." ".($protectPoss/100)." m";
                         }
                         elseif ($protect == null){
-                          echo "brak";
+                          echo translate('none');
                         }
                         else{
-                          echo "do ".$protect." cm";
+                          echo translate('upto')." ".$protect." cm";
                         }
                         echo "</td>
                       </tr>
                       <tr>
-                        <td class='tabel-left'>możliwość zabrania z łowiska w ciągu doby</td>
+                        <td class='tabel-left'>".translate('taking')."</td>
                         <td class='tabel-right'>";
                         $protectPoss = $row['protectPoss'];
                         if ($protectPoss >= 1000){
-                          echo "do ".($protectPoss/1000)." kg";
+                          echo translate('upto')." ".($protectPoss/1000)." kg";
                         }
                         elseif ($protectPoss > 10){
-                          echo "do ".$protectPoss." g";
+                          echo translate('upto')." ".$protectPoss." g";
                         }
                         elseif ($protectPoss === null){
-                          echo "bez limitu";
+                          echo translate('noLimit');
                         }
                         else{
-                          echo "do ".$protectPoss." szt.";
+                          echo translate('upto')." ".$protectPoss." ".translate('pieces');
                         }
                         echo "</td>
                       </tr>
                       <tr>
                         <td class='tabel-bottom-left'>
-                          okres ochronny
+                          ".translate('closedSeason')."
                         </td>
                         <td class='tabel-bottom-right'>";
-                        $sql3 = "SELECT ptime.name
+                        $sql3 = "SELECT ptime_".$selectedLanguage.".name
                         FROM protecttimes
                         INNER JOIN fish ON protecttimes.fishID = fish.fishID
-                        INNER JOIN ptime ON protecttimes.protectID = ptime.protectID
+                        INNER JOIN ptime_".$selectedLanguage." ON protecttimes.protectID = ptime_".$selectedLanguage.".protectID
                         WHERE fish.fishID = $fishID";
                         $result3 = $db->query($sql3);
                         if ($result3->num_rows > 0) {
@@ -156,7 +159,7 @@
                                 echo "<span style='color:#3360bb;'>•</span>".$row3["name"] . "<br>";
                             }
                         } else {
-                            echo "brak";
+                            echo translate('none');
                         }
                         echo "</td>
                       </tr>
@@ -166,13 +169,13 @@
                     <div>
 
                       <p class='fish-location-title'>
-                        WYSTĘPOWANIE
+                        ".translate('occurrence')."
                       </p>
                       <ul style='width:".$row['width']."px;'>";
-                      $sql4 = "SELECT loc.name
+                      $sql4 = "SELECT loc_".$selectedLanguage.".name
                       FROM fishlocs
                       INNER JOIN fish ON fishlocs.fishID = fish.fishID
-                      INNER JOIN loc ON fishlocs.locID = loc.locID
+                      INNER JOIN loc_".$selectedLanguage." ON fishlocs.locID = loc_".$selectedLanguage.".locID
                       WHERE fish.fishID = $fishID";
                       
                       $result4 = $db->query($sql4);
@@ -182,7 +185,7 @@
                               echo "<li>".$row4["name"]."</li>";
                           }
                       } else {
-                          echo "brak";
+                          echo translate('none');
                       }
                         echo "
                       </ul>
@@ -190,13 +193,13 @@
                     <div class='vertical-hr-two' style='margin-left:".$row['margin']."px'></div>
                     <div>
                       <p class='fish-location-title'>
-                        PRZYNĘTY
+                        ".translate('baits')."
                       </p>
                       <ul>";
-                      $sql2 = "SELECT bait.name
+                      $sql2 = "SELECT bait_".$selectedLanguage.".name
                       FROM fishbaits
                       INNER JOIN fish ON fishbaits.fishID = fish.fishID
-                      INNER JOIN bait ON fishbaits.BaitID = bait.BaitID
+                      INNER JOIN bait_".$selectedLanguage." ON fishbaits.BaitID = bait_".$selectedLanguage.".BaitID
                       WHERE fish.fishID = $fishID";
                       
                       $result2 = $db->query($sql2);
@@ -206,7 +209,7 @@
                               echo "<li>".$row2["name"]."</li>";
                           }
                       } else {
-                          echo "brak";
+                          echo translate('none');
                       }
                       echo "</ul>
                     </div>
