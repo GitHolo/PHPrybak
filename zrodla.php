@@ -1,7 +1,6 @@
-<?php $baseUrl = '';
-if ($_SERVER['REQUEST_URI'] !== '/') {
-    $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
-}
+<?php $baseUrl = 'http://' . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+$baseUrl = str_replace('\\', '', $baseUrl);
+
 
 include ('languages.php');
 

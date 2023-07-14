@@ -1,8 +1,7 @@
 <?php 
-    $baseUrl = '';
-    if ($_SERVER['REQUEST_URI'] !== '/') {
-        $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
-    }
+    $baseUrl = 'http://' . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+    $baseUrl = str_replace('\\', '', $baseUrl);
+    
     if (!isset($_GET['id'])) {
       echo "<h1>Błąd: nie określono identyfikatora ryby.</h1>
       <a class='zrodla' href='".$baseUrl."'><h2>Powrót</h2></a>";

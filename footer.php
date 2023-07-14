@@ -8,6 +8,7 @@
       <a href="mailto:borzyskowskib@gmail.com">borzyskowskib@gmail.com</a>
     </div>
     <?php
+    $currentDirectory = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
     $currentURL = $_SERVER['REQUEST_URI'];
     $newURL = preg_replace('/([&?]lang=[^&]+)/', '', $currentURL);
     if (strpos($newURL, '?') !== false) {
@@ -26,7 +27,7 @@
         <img src="<?php echo $language['flag']; ?>" alt="<?php echo $language['name']; ?>" width="32" height="24">
       </a>
     <?php } ?>
-    <a href="<?php echo $newURL; ?>">
+    <a href="<?php echo $currentDirectory."?lang=".$selectedLanguage; ?>">
       <img src="<?php echo $baseUrl; ?>/images/licensed-image.jpg" alt="Logo" class="footer-image" />
     </a>
   </div>

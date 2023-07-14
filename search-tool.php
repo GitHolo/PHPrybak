@@ -1,7 +1,6 @@
-<?php $baseUrl = '';
-if ($_SERVER['REQUEST_URI'] !== '/') {
-    $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
-}?>
+<?php $baseUrl = 'http://' . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+$baseUrl = str_replace('\\', '', $baseUrl);
+?>
 <link href="<?php echo $baseUrl; ?>/search-tool.css" rel="stylesheet" />
 <div class="search-tool">
     <div class="fish-container">
@@ -23,10 +22,10 @@ if ($_SERVER['REQUEST_URI'] !== '/') {
                         $description = $row['desc'];
                         $image = $row['img'];
                         $fishName = $row['name'];
-                        echo "<div class='fish-item' data-description='{$description}'>";
+                        echo "<div class='fish-item' data-description='".htmlspecialchars($description, ENT_QUOTES)."'>";
                         echo "<a href='ryba.php?id=".$row['fishID']."&lang=".$selectedLanguage."'>";
                         echo "<img src='".$baseUrl.$image."'>";
-                        echo "<div class='fish-name'>{$fishName}</div>";
+                        echo "<div class='fish-name'>".htmlspecialchars($fishName, ENT_QUOTES)."</div>";
                         echo "</a>";
                         echo "</div>";
                     }

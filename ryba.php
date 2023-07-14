@@ -1,18 +1,14 @@
-<?php $baseUrl = '';
-if ($_SERVER['REQUEST_URI'] !== '/') {
-    $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
-}
+<?php 
+$baseUrl = 'http://' . $_SERVER['HTTP_HOST'] . rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
+$baseUrl = str_replace('\\', '', $baseUrl);
+
 
 include ('languages.php');
 
 ?>
 <!DOCTYPE html>
 <html lang=<?php echo "'".$selectedLanguage."'>"?>
-  <head><?php
-  $baseUrl = '';
-if ($_SERVER['REQUEST_URI'] !== '/') {
-    $baseUrl = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/');
-}?>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
